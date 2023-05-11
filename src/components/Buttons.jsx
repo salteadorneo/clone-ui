@@ -1,26 +1,30 @@
-import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 import { THEMES } from '../themes'
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight'
 
 // eslint-disable-next-line react/prop-types
 export default function Buttons ({ theme }) {
-  const [radius, setRadius] = useState('md')
-
-  useEffect(() => {
-    setRadius(THEMES[theme].buttons?.rounded ?? 'md')
-  }, [theme])
+  function copyToClipboard (idx) {
+    navigator.clipboard.writeText(html[idx])
+    toast.success('Copied to clipboard')
+  }
 
   const buttonsTheme = THEMES[theme].buttons
 
-  const html = Object.entries(THEMES[theme].colors).map(([color, value]) => (
-    `<button class="text-white flex items-end justify-end px-6 py-2 border ${radius !== 'none' ? `rounded-${radius} ` : ''}bg-${color}">
-    ${color}
+  const html = Object.entries(buttonsTheme).map(([type, {
+    backgroundColor,
+    borderColor = backgroundColor,
+    color,
+    fontWeight = 'normal',
+    rounded
+  }]) => (
+    `<button class="text-${color} font-${fontWeight} flex items-end justify-end px-6 py-2 border border-[${borderColor}] ${rounded !== 'none' ? `rounded-${rounded} ` : ''}bg-[${backgroundColor}]">
+    ${type}
 </button>`
-  )).join('\n')
+  ))
 
   return (
-    <section className='space-y-2 mb-4'>
-        <h2 className='text-xl font-light mb-4'>
+    <section className='space-y-2'>
+        <h2 className='text-2xl font-light text-slate-600 mb-4'>
             Buttons
         </h2>
         <div className="flex justify-center gap-1">
@@ -29,38 +33,24 @@ export default function Buttons ({ theme }) {
               borderColor = backgroundColor,
               color,
               fontWeight = 'normal',
-              rounded
-            }]) => (
+              rounded,
+              py = 2,
+              px = 6
+            }], idx) => (
                 <button
                     key={type}
-                    className={`text-white flex items-end justify-end px-6 py-2 border rounded-${rounded}`}
+                    className={`text-white flex items-end justify-end px-${px} py-${py} font-${fontWeight} border rounded-${rounded} cursor-copy`}
                     style={{
                       backgroundColor,
                       borderColor,
-                      color,
-                      fontWeight
+                      color
                     }}
-                    title={type}
+                    onClick={() => copyToClipboard(idx)}
                 >
                     {type}
                 </button>
             ))}
         </div>
-        <SyntaxHighlighter language='htmlbars' className='text-left'>
-            {html}
-        </SyntaxHighlighter>
-        {/* <div className="inline-flex rounded-md shadow-sm" role="group">
-            {['none', 'md', 'xl', 'full'].map(value => (
-                <button
-                    key={value}
-                    type="button"
-                    className={`px-4 py-2 text-sm border first:rounded-l-lg last:rounded-r-md bg-gray-700 border-gray-600 text-white hover:bg-gray-600 ${radius === value ? 'bg-gray-600' : ''}`}
-                    onClick={() => setRadius(value)}
-                >
-                    {value}
-                </button>
-            ))}
-        </div> */}
     </section>
   )
 }

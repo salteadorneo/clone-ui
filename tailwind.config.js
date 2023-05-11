@@ -21,7 +21,13 @@ export default {
     'rounded-md',
     'rounded-lg',
     'rounded-xl',
-    'rounded-full'
+    'rounded-full',
+    'py-1.5',
+    'px-2',
+    'px-3',
+    'px-4',
+    'font-medium',
+    'font-semibold'
   ],
   plugins: []
 }

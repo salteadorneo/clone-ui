@@ -1,12 +1,13 @@
 
 import { useState } from 'react'
-import { Link, Route } from 'wouter'
+import { Route } from 'wouter'
 import { Toaster } from 'sonner'
 import { THEMES } from './themes'
 import Colors from './components/Colors'
 import Buttons from './components/Buttons'
 import Logo from './components/Logo'
-import Export from './components/Export'
+
+import { version } from '../package.json'
 
 function App () {
   const [theme, setTheme] = useState('twitter')
@@ -31,32 +32,26 @@ function App () {
               <option key={theme} value={theme}>{name}</option>
             ))}
           </select>
-
-          <nav className='flex items-center gap-3'>
-            <Link href='/'>Preview</Link>
-            <Link href='/export'>Export</Link>
-          </nav>
         </div>
       </header>
-      <main className="p-4 text-center bg-gray-50">
-        <section className='max-w-4xl mx-auto'>
+      <main className="p-4 pb-12 text-center bg-gray-200">
+        <section className='max-w-4xl mx-auto space-y-6'>
           <Route path="/">
-
             <Colors theme={theme} />
-
             <Buttons theme={theme} />
-
-          </Route>
-          <Route path="/export">
-            <Export theme={theme} />
           </Route>
         </section>
       </main>
-      {/* <footer className='flex justify-center py-3 px-6'>
-        <p className='flex items-center gap-2 text-slate-800'>
-          <Logo /> by <a href='https://salteadorneo.dev' target='_blank' rel="noreferrer">salteadorneo.dev</a>
+      <footer className='flex justify-center py-3 px-6'>
+        <p className='flex flex-wrap items-center gap-2 text-sm text-slate-800'>
+          <Logo />
+          <span>by <a href='https://salteadorneo.dev' target='_blank' rel="noreferrer" className='font-bold text-gray-600'>salteadorneo.dev</a></span>
+          <span>·</span>
+          <span>v.{version}</span>
+          <span>·</span>
+          <a href="https://github.com/salteadorneo/clone-ui" target='_blank' rel="noreferrer">GitHub</a>
         </p>
-      </footer> */}
+      </footer>
     </>
   )
 }
