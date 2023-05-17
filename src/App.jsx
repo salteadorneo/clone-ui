@@ -8,9 +8,12 @@ import Buttons from './components/Buttons'
 import Logo from './components/Logo'
 
 import { version } from '../package.json'
+import Twitter from './themes/twitter'
 
 function App () {
   const [theme, setTheme] = useState('twitter')
+
+  const themeColors = Object.entries(THEMES[theme].colors)
 
   return (
     <>
@@ -37,8 +40,16 @@ function App () {
       <main className="p-4 pb-12 text-center bg-gray-200">
         <section className='max-w-4xl mx-auto space-y-6'>
           <Route path="/">
+            <style>
+              {`:root {\n${
+                  themeColors.map(([color, value]) => (
+                      `   --color-${color}: ${value};`
+                  )).join('\n')
+              }\n}`}
+            </style>
             <Colors theme={theme} />
             <Buttons theme={theme} />
+            <Twitter theme={theme} />
           </Route>
         </section>
       </main>
