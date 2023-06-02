@@ -1,7 +1,7 @@
 import { toast } from 'sonner'
 import { THEMES } from '../themes'
+import Component from './Component'
 
-// eslint-disable-next-line react/prop-types
 export default function Buttons ({ theme }) {
   function copyToClipboard (idx) {
     navigator.clipboard.writeText(html[idx])
@@ -24,33 +24,36 @@ export default function Buttons ({ theme }) {
 
   return (
     <section className='space-y-2'>
-        <h2 className='text-2xl font-light text-slate-600 mb-4'>
-            Buttons
-        </h2>
-        <div className="flex justify-center gap-1">
-            {Object.entries(buttonsTheme).map(([type, {
-              backgroundColor,
-              borderColor = backgroundColor,
-              color,
-              fontWeight = 'normal',
-              rounded,
-              py = 2,
-              px = 6
-            }], idx) => (
-                <button
-                    key={type}
-                    className={`text-white flex items-end justify-end px-${px} py-${py} font-${fontWeight} border rounded-${rounded} cursor-copy`}
-                    style={{
-                      backgroundColor,
-                      borderColor,
-                      color
-                    }}
-                    onClick={() => copyToClipboard(idx)}
-                >
-                    {type}
-                </button>
-            ))}
-        </div>
+      <h2 className='text-2xl font-light text-slate-600 mb-4'>
+        Buttons
+      </h2>
+      <div className='flex justify-center gap-1'>
+        {Object.entries(buttonsTheme).map(([type, {
+          backgroundColor,
+          borderColor = backgroundColor,
+          color,
+          fontWeight = 'normal',
+          rounded,
+          py = 2,
+          px = 6
+        }], idx) => (
+          <Component
+            key={type}
+          >
+            <button
+              className={`text-white flex items-end justify-end px-${px} py-${py} font-${fontWeight} border rounded-${rounded} cursor-copy`}
+              style={{
+                backgroundColor,
+                borderColor,
+                color
+              }}
+              onClick={() => copyToClipboard(idx)}
+            >
+              {type}
+            </button>
+          </Component>
+        ))}
+      </div>
     </section>
   )
 }
