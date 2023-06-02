@@ -17,7 +17,7 @@ function App () {
 
   return (
     <>
-      <Toaster position="top-center" />
+      <Toaster position='top-center' />
       <header className='flex justify-between py-3 px-6'>
         <h1>
           <a href='/'>
@@ -37,9 +37,9 @@ function App () {
           </select>
         </div>
       </header>
-      <main className="p-4 pb-12 text-center bg-gray-200">
+      <main className='p-4 pb-12 text-center bg-gray-200'>
         <section className='max-w-4xl mx-auto space-y-6'>
-          <Route path="/">
+          <Route path='/'>
             <style>
               {`:root {\n${
                   themeColors.map(([color, value]) => (
@@ -56,11 +56,11 @@ function App () {
       <footer className='flex justify-center py-3 px-6'>
         <p className='flex flex-wrap items-center gap-2 text-sm text-slate-800'>
           <Logo />
-          <span>by <a href='https://salteadorneo.dev' target='_blank' rel="noreferrer" className='font-bold text-gray-600'>salteadorneo.dev</a></span>
+          <span>by <a href='https://salteadorneo.dev' target='_blank' rel='noreferrer' className='font-bold text-gray-600'>salteadorneo.dev</a></span>
           <span>·</span>
           <span>v.{version}</span>
           <span>·</span>
-          <a href="https://github.com/salteadorneo/clone-ui" target='_blank' rel="noreferrer">GitHub</a>
+          <a href='https://github.com/salteadorneo/clone-ui' target='_blank' rel='noreferrer'>GitHub</a>
         </p>
       </footer>
     </>

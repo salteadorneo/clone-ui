@@ -24,33 +24,33 @@ export default function Colors ({ theme }) {
 
   return (
     <section className='space-y-2'>
-        <h2 className='text-2xl font-light text-slate-600 mb-4'>
-          Colors
-        </h2>
-        <div className="flex justify-center">
-            {Object.entries(THEMES[theme].colors).map(([color, value]) => (
-              <div
-                key={color}
-                className="w-[100px] aspect-square flex flex-col items-end justify-end p-2 cursor-copy"
-                style={{ backgroundColor: value }}
-                title={value}
-                onClick={() => copyToClipboard(value)}
-              >
-                {/* <span className="text-xs">{value}</span>
+      <h2 className='text-2xl font-light text-slate-600 mb-4'>
+        Colors
+      </h2>
+      <div className='flex justify-center'>
+        {Object.entries(THEMES[theme].colors).map(([color, value]) => (
+          <div
+            key={color}
+            className='w-[100px] aspect-square flex flex-col items-end justify-end p-2 cursor-copy'
+            style={{ backgroundColor: value }}
+            title={value}
+            onClick={() => copyToClipboard(value)}
+          >
+            {/* <span className="text-xs">{value}</span>
                 <span className="text-xs">{color}</span> */}
-              </div>
-            ))}
-        </div>
-        <div className="flex items-center justify-center gap-4">
-          {['CSS', 'SVG'].map(value => (
-            <button
-                key={value}
-                onClick={() => copyToClipboard(value === 'CSS' ? css : svg)}
-            >
-                {value}
-            </button>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
+      <div className='flex items-center justify-center gap-4'>
+        {['CSS', 'SVG'].map(value => (
+          <button
+            key={value}
+            onClick={() => copyToClipboard(value === 'CSS' ? css : svg)}
+          >
+            {value}
+          </button>
+        ))}
+      </div>
     </section>
   )
 }
