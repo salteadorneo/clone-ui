@@ -14,7 +14,7 @@ export const THEMES = {
     },
     buttons: {
       primary: {
-        backgroundColor: '#1DA1F2',
+        backgroundColor: 'bg-[#1DA1F2]',
         color: 'white',
         fontWeight: 'bold',
         rounded: 'full'
@@ -41,13 +41,13 @@ export const THEMES = {
     },
     buttons: {
       primary: {
-        backgroundColor: '#1877F2',
+        backgroundColor: 'bg-primary',
         color: 'white',
         fontWeight: 'bold',
         rounded: 'md'
       },
       secondary: {
-        backgroundColor: '#42B72A',
+        backgroundColor: 'bg-secondary',
         color: 'white',
         rounded: 'md'
       }

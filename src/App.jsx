@@ -4,11 +4,10 @@ import { Route } from 'wouter'
 import { Toaster } from 'sonner'
 import { THEMES } from './themes'
 import Colors from './components/Colors'
-import Buttons from './components/Buttons'
 import Logo from './components/Logo'
 
 import { version } from '../package.json'
-import Twitter from './themes/twitter'
+import Twitter from './themes/Twitter'
 
 function App () {
   const [theme, setTheme] = useState('twitter')
@@ -48,7 +47,7 @@ function App () {
               }\n}`}
             </style>
             <Colors theme={theme} />
-            <Buttons theme={theme} />
+            {/* <Buttons theme={theme} /> */}
             <Twitter theme={theme} />
           </Route>
         </section>
