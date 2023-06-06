@@ -46,9 +46,12 @@ function App () {
                   )).join('\n')
               }\n}`}
             </style>
+
             <Colors theme={theme} />
-            {/* <Buttons theme={theme} /> */}
-            <Twitter theme={theme} />
+
+            {theme === 'twitter' && (
+              <Twitter theme={theme} />
+            )}
           </Route>
         </section>
       </main>

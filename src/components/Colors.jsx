@@ -57,18 +57,20 @@ ${themeColors.map(([color, value]) => (
           </div>
         ))}
       </div>
+
       <div className='flex items-center gap-4 mt-4'>
         {['Tailwind', 'CSS', 'SVG'].map(value => (
           <button
             key={value}
             onClick={handleTab}
-            className={`${tab === value.toLowerCase() ? 'bg-[#f0f0f0]' : ''} py-1 px-3`}
+            className={`${tab === value.toLowerCase() ? 'bg-white' : ''} py-1 px-3`}
           >
             {value}
           </button>
         ))}
       </div>
       <Code code={values[tab]} language={tab === 'svg' ? 'html' : 'css'} />
+
     </section>
   )
 }
