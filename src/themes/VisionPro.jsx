@@ -8,6 +8,7 @@ export default function VisionPro ({ theme }) {
 
   const [section, setSection] = useState('video')
   const [isHovering, setIsHovering] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   return (
     <>
@@ -29,14 +30,21 @@ export default function VisionPro ({ theme }) {
             const stream = await navigator.mediaDevices.getUserMedia({
               audio: false,
               video: {
-                width: 1280, height: 720
+                width: 1280,
+                height: 720,
+                facingMode: {
+                  exact: 'environment'
+                }
               }
             })
             const video = document.getElementById('video')
             video.srcObject = stream
+            setIsPlaying(true)
           }
         }
-        style={{ backgroundImage: `url(/vision-pro/background-${section}.jpg),url(/vision-pro/background.png)` }}
+        style={{
+          backgroundImage: !isPlaying && `url(/vision-pro/background-${section}.jpg),url(/vision-pro/background.png)`
+        }}
       >
         <video
           id='video'
