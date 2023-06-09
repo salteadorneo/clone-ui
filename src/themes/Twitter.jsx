@@ -1,8 +1,22 @@
+import Colors from '../components/Colors'
 import Component from '../components/Component'
+import { THEMES } from '../themes'
 
 export default function Twitter ({ theme }) {
+  const themeColors = Object.entries(THEMES[theme].colors)
+
   return (
-    <>
+    <section className='max-w-3xl mx-auto'>
+      <style>
+        {`:root {\n${
+            themeColors.map(([color, value]) => (
+                `   --color-${color}: ${value};`
+            )).join('\n')
+        }\n}`}
+      </style>
+
+      <Colors theme={theme} />
+
       <h2 className='text-2xl font-light text-slate-600 mb-4'>
         Buttons
       </h2>
@@ -57,6 +71,6 @@ export default function Twitter ({ theme }) {
           />
         </label>
       </Component>
-    </>
+    </section>
   )
 }
