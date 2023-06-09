@@ -22,7 +22,7 @@ export default function Twitter ({ theme }) {
           </button>
         </Component>
       </section>
-      <Component bg='bg-black'>
+      <Component className='bg-black'>
         <button
           className='flex items-center relative rounded-full p-3 text-[#e7e9ea] hover:bg-[#e7e9ea]/10'
           title='Inicio'

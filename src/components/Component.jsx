@@ -2,7 +2,7 @@ import { useState } from 'react'
 import ReactDOMServer from 'react-dom/server'
 import Code from './Code'
 
-export default function Component ({ bg, children }) {
+export default function Component ({ className, children }) {
   const [showCode, setShowCode] = useState(false)
 
   function handleToggleCode () {
@@ -15,7 +15,7 @@ export default function Component ({ bg, children }) {
 
   return (
     <section className='relative flex flex-col justify-between shadow-lg bg-gray-50 rounded'>
-      <div className={`grid place-content-center py-4 ${bg}`}>
+      <div className={`grid place-content-center py-4 ${className}`}>
         {children}
       </div>
       <button

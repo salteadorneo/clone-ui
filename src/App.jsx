@@ -3,16 +3,14 @@ import { useState } from 'react'
 import { Route } from 'wouter'
 import { Toaster } from 'sonner'
 import { THEMES } from './themes'
-import Colors from './components/Colors'
 import Logo from './components/Logo'
 
 import { version } from '../package.json'
 import Twitter from './themes/Twitter'
+import VisionPro from './themes/VisionPro'
 
 function App () {
-  const [theme, setTheme] = useState('twitter')
-
-  const themeColors = Object.entries(THEMES[theme].colors)
+  const [theme, setTheme] = useState('vision-pro')
 
   return (
     <>
@@ -37,23 +35,14 @@ function App () {
         </div>
       </header>
       <main className='p-4 pb-12 text-center bg-gray-200'>
-        <section className='max-w-4xl mx-auto space-y-6'>
-          <Route path='/'>
-            <style>
-              {`:root {\n${
-                  themeColors.map(([color, value]) => (
-                      `   --color-${color}: ${value};`
-                  )).join('\n')
-              }\n}`}
-            </style>
-
-            <Colors theme={theme} />
-
-            {theme === 'twitter' && (
-              <Twitter theme={theme} />
-            )}
-          </Route>
-        </section>
+        <Route path='/'>
+          {theme === 'vision-pro' && (
+            <VisionPro theme={theme} />
+          )}
+          {theme === 'twitter' && (
+            <Twitter theme={theme} />
+          )}
+        </Route>
       </main>
       <footer className='flex justify-center py-3 px-6'>
         <p className='flex flex-wrap items-center gap-2 text-sm text-slate-800'>
