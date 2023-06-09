@@ -22,11 +22,9 @@ export default function VisionPro ({ theme }) {
       <h2 className='text-2xl font-light text-slate-600 mb-4'>
         Live preview
       </h2>
-      {/* <div className='video-wrap'>
-        <video id='video' playsInline autoPlay />
-      </div>
-      <div className='controller'>
-        <button onClick={
+      <section
+        className='relative grid place-content-center aspect-[9/16] md:aspect-video shadow-2xl bg-cover bg-center overflow-hidden transition-all duration-300'
+        onClick={
           async () => {
             const stream = await navigator.mediaDevices.getUserMedia({
               audio: false,
@@ -38,13 +36,14 @@ export default function VisionPro ({ theme }) {
             video.srcObject = stream
           }
         }
-        >Capture
-        </button>
-      </div> */}
-      <section
-        className='grid place-content-center aspect-[9/16] md:aspect-video shadow-2xl bg-cover bg-center overflow-hidden transition-all duration-300'
         style={{ backgroundImage: `url(/vision-pro/background-${section}.jpg),url(/vision-pro/background.png)` }}
       >
+        <video
+          id='video'
+          className='absolute inset-0 w-full h-full object-cover'
+          playsInline
+          autoPlay
+        />
         <div className='flex items-center gap-9'>
           <div
             className={`relative space-y-2.5 rounded-full p-2.5 bg-white/10 ${shadow}`}
