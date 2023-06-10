@@ -64,6 +64,12 @@ export default function VisionPro ({ theme }) {
           backgroundImage: !isPlaying && `url(/vision-pro/background-${section}.webp),url(/vision-pro/background.webp)`
         }}
       >
+        <video
+          id='video'
+          className='absolute inset-0 w-full h-full object-cover'
+          playsInline
+          autoPlay
+        />
         <div className='absolute bottom-2 right-2 space-x-2'>
           <button
             className='bg-white/10 hover:bg-white/30 rounded-full px-4 h-8 text-white'
@@ -84,12 +90,6 @@ export default function VisionPro ({ theme }) {
             +
           </button>
         </div>
-        <video
-          id='video'
-          className='absolute inset-0 -z-10 w-full h-full object-cover'
-          playsInline
-          autoPlay
-        />
         <div className={`flex items-center gap-9 scale-${scale}`}>
           <div
             className={`relative space-y-2.5 rounded-full p-2.5 bg-white/10 ${shadow}`}
