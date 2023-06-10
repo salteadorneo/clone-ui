@@ -19,7 +19,7 @@ export default function Component ({ className, children }) {
         {children}
       </div>
       <button
-        className='absolute top-1 right-1 text-gray-600 hover:text-primary'
+        className='absolute top-1 right-1 text-white hover:text-primary drop-shadow'
         onClick={handleToggleCode}
       >
         <svg width={24} height={24} fill='currentColor' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'>

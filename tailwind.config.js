@@ -27,7 +27,10 @@ export default {
     'px-3',
     'px-4',
     'font-medium',
-    'font-semibold'
+    'font-semibold',
+    'scale-50',
+    'scale-75',
+    'scale-100'
   ],
   plugins: []
 }
