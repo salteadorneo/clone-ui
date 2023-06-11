@@ -3,7 +3,7 @@ import ReactDOMServer from 'react-dom/server'
 import Code from './Code'
 
 export default function Component ({ className, children }) {
-  const [showCode, setShowCode] = useState(false)
+  const [showCode, setShowCode] = useState(true)
 
   function handleToggleCode () {
     setShowCode(!showCode)

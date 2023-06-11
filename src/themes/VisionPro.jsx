@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Component from '../components/Component'
 import { THEMES } from '../themes'
+import Player from '../components/vision-pro/Player'
 
 const shadow = 'backdrop-blur-[50px] shadow-[0px_8px_6px_rgba(0,0,0,0.05),inset_0px_-1px_1px_rgba(255,255,255,0.1),inset_0px_1px_1px_rgba(255,255,255,0.25)]'
 
@@ -59,7 +60,7 @@ export default function VisionPro ({ theme }) {
         Live preview
       </h2>
       <section
-        className='relative grid place-content-center aspect-[9/16] md:aspect-video shadow-2xl overflow-hidden bg-cover bg-center transition-all duration-300'
+        className='relative grid place-content-center aspect-[9/16] md:aspect-video shadow-2xl overflow-hidden bg-cover bg-center transition-all duration-500'
         style={{
           backgroundImage: !isPlaying && `url(/vision-pro/background-${section}.webp),url(/vision-pro/background.webp)`
         }}
@@ -90,14 +91,14 @@ export default function VisionPro ({ theme }) {
             +
           </button>
         </div>
-        <div className={`flex items-center gap-9 scale-${scale}`}>
+        <div className={`flex items-center gap-9 scale-${scale} transition-all duration-700`}>
           <div
             className={`relative space-y-2.5 rounded-full p-2.5 bg-white/10 ${shadow}`}
           >
-            {['video', 'music', 'podcast', 'article', 'event', 'search'].map((sec, index) => (
+            {['video', 'music', 'frames', 'search'].map((sec, index) => (
               <button
                 key={sec}
-                className={`grid place-content-center w-12 rounded-full aspect-square hover:bg-white/30 ${!isHovering && section === sec ? 'bg-white/30' : ''} transition-all duration-300`}
+                className={`grid place-content-center w-12 rounded-full aspect-square hover:bg-white/30 ${!isHovering && section === sec ? 'bg-white/30' : ''} transition-all duration-500`}
                 onClick={() => setSection(sec)}
                 onMouseOver={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
@@ -115,36 +116,38 @@ export default function VisionPro ({ theme }) {
                   className='rounded-[32px] w-full h-full'
                   src='https://www.youtube-nocookie.com/embed/TX9qSaGXFyg?autoplay=1&controls=0&enablejsapi=1&fs=0&loop=1&modestbranding=1&iv_load_policy=3&mute=1'
                   allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                  allowfullscreen
+                  allowFullScreen
                 />
                 <div className='absolute inset-0' />
               </>
             )}
             {section === 'music' && (
               <>
-                <div
-                  className={`absolute left-1/2 -translate-x-1/2 -bottom-8 flex justify-between gap-2 w-2/3 rounded-full p-2.5 bg-[#244967]/95 ${shadow}`}
-                >
-                  {['prev', 'pause', 'next'].map((sec, index) => (
-                    <button
-                      key={sec}
-                      className='grid place-content-center w-12 rounded-full aspect-square hover:bg-white/30 transition-all duration-300'
-                    >
-                      <img src={`/vision-pro/iconplayer${index + 1}.svg`} alt='' />
-                    </button>
-                  ))}
-                  <div
-                    className='bg-black/20 p-2 w-[350px]'
-                  />
-                  {['comment', 'list', 'volume'].map((sec, index) => (
-                    <button
-                      key={sec}
-                      className='grid place-content-center w-12 rounded-full aspect-square hover:bg-white/30 transition-all duration-300'
-                    >
-                      <img src={`/vision-pro/iconplayer${index + 4}.svg`} alt='' />
-                    </button>
-                  ))}
-                </div>
+                <section className='flex h-full'>
+                  <div className='aa basis-1/3 h-full rounded-l-[32px] text-white text-left p-6'>
+                    <p className='text-2xl font-bold'>Library</p>
+                    <p className='opacity-75'>All Music</p>
+                    <ul className='space-y-2 mt-4'>
+                      <li className='flex items-center gap-4 rounded-[14px] py-3 px-6 opacity-60 hover:opacity-100 hover:bg-white/30 transition-all duration-300 cursor-default'>
+                        <img src='/vision-pro/icon3.svg' alt='' />
+                        Albums
+                      </li>
+                    </ul>
+                    <p className='text-xl font-bold mt-6'>Playlists</p>
+                    <ul className='space-y-2 mt-4'>
+                      <li className='flex items-center gap-4 rounded-[14px] py-3 px-6 opacity-60 hover:opacity-100 hover:bg-white/30 transition-all duration-300 cursor-default'>
+                        <img src='/vision-pro/icon2.svg' alt='' />
+                        All Playlists
+                      </li>
+                    </ul>
+                  </div>
+                  <div className='basis-full h-full bg-white/10 rounded-r-[32px] text-white text-left px-8 py-6'>
+                    <p className='text-2xl font-bold'>Playlists</p>
+                    <p className='opacity-75'>0 Playlists</p>
+
+                  </div>
+                </section>
+                <Player shadow={shadow} />
               </>
             )}
           </section>
@@ -154,29 +157,29 @@ export default function VisionPro ({ theme }) {
       <h2 className='text-2xl font-light text-slate-600 mb-4'>
         Buttons
       </h2>
-
-      <Component className='bg-[#244967] mb-4'>
-        <button
-          className='grid place-content-center w-12 rounded-full aspect-square hover:bg-white/30 transition-all duration-300'
-        >
-          <img src='/vision-pro/icon1.svg' alt='' />
-        </button>
-      </Component>
-
-      <Component className='bg-[#244967]'>
-        <div
-          className={`relative space-y-2.5 rounded-full p-2.5 bg-white/10 ${shadow}`}
-        >
-          {['video', 'music', 'podcast', 'article', 'event', 'search'].map((sec, index) => (
-            <button
-              key={sec}
-              className='grid place-content-center w-12 rounded-full aspect-square hover:bg-white/30 transition-all duration-300'
-            >
-              <img src={`/vision-pro/icon${index + 1}.svg`} alt={sec} />
-            </button>
-          ))}
-        </div>
-      </Component>
+      <section className='space-y-4'>
+        <Component className='bg-[#244967]'>
+          <button
+            className='grid place-content-center w-12 rounded-full aspect-square hover:bg-white/30 transition-all duration-300'
+          >
+            <img src='/vision-pro/icon1.svg' alt='' />
+          </button>
+        </Component>
+        <Component className='bg-[#244967]'>
+          <div
+            className={`relative space-y-2.5 rounded-full p-2.5 bg-white/10 ${shadow}`}
+          >
+            {['video', 'music', 'frames', 'search'].map((sec, index) => (
+              <button
+                key={sec}
+                className='grid place-content-center w-12 rounded-full aspect-square hover:bg-white/30 transition-all duration-300'
+              >
+                <img src={`/vision-pro/icon${index + 1}.svg`} alt={sec} />
+              </button>
+            ))}
+          </div>
+        </Component>
+      </section>
     </>
   )
 }

@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.aa {
+    background: linear-gradient(0deg, #0000001a, #0000001a), #ffffff1a;
+}
