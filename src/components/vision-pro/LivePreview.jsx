@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Player from './Player'
 import MenuItem from './MenuItem'
 import Menu from './Menu'
@@ -10,6 +10,8 @@ const windowHeight = window.innerHeight / 5
 const MIN_RESOLUTION = 1200
 
 export default function LivePreview ({ shadow }) {
+  const bg = useRef(null)
+
   const size = useWindowSize()
 
   const [isLoading, setIsLoading] = useState(false)
@@ -19,11 +21,10 @@ export default function LivePreview ({ shadow }) {
   const [scale, setScale] = useState(75)
 
   useEffect(() => {
-    const bg = document.getElementById('bg')
     document.body.addEventListener('mousemove', (e) => {
       const mouseX = e.clientX / windowWidth
       const mouseY = e.clientY / windowHeight
-      bg.style.transform = `translate3d(-${mouseX / 8}%, -${mouseY / 8}%, 0)`
+      bg.current.style.transform = `translate3d(-${mouseX / 8}%, -${mouseY / 8}%, 0)`
     })
   }, [])
 
@@ -79,7 +80,7 @@ export default function LivePreview ({ shadow }) {
       className='relative grid place-content-center aspect-[9/16] md:aspect-video shadow-2xl overflow-hidden'
     >
       <div
-        id='bg'
+        ref={bg}
         className={`absolute inset-0 w-[105%] h-[105%] bg-cover bg-no-repeat ${isLoading ? 'transition-all duration-500' : ''}`}
         style={{
           backgroundImage: !isPlaying && `url(/vision-pro/background-${section}.webp),url(/vision-pro/background.webp)`
@@ -91,7 +92,7 @@ export default function LivePreview ({ shadow }) {
         playsInline
         autoPlay
       />
-      <div className='absolute bottom-2 right-2 space-x-2'>
+      <div className='absolute bottom-3 right-2 space-x-2'>
         <button
           className='hidden bg-white/10 hover:bg-white/30 rounded-full px-4 h-8 text-white'
           onClick={handleCamera}
