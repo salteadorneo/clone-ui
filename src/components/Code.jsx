@@ -8,6 +8,7 @@ export default function Code ({ code, language = 'html' }) {
     navigator.clipboard.writeText(code)
     toast.success('Copied to clipboard')
   }
+
   return (
     <div className='relative text-left'>
       <button

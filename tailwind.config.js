@@ -13,6 +13,15 @@ export default {
         quaternary: 'var(--color-quaternary)',
         quinary: 'var(--color-quinary)',
         senary: 'var(--color-senary)'
+      },
+      animation: {
+        'fade-in-scale': 'fadeinscale 1.5s ease-in-out'
+      },
+      keyframes: {
+        fadeinscale: {
+          '0%': { transform: 'scale(1.5)', opacity: 0 },
+          '100%': { transform: 'scale(1)', opacity: 1 }
+        }
       }
     }
   },

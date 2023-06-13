@@ -3,7 +3,7 @@ import ReactDOMServer from 'react-dom/server'
 import Code from './Code'
 
 export default function Component ({ className, children }) {
-  const [showCode, setShowCode] = useState(true)
+  const [showCode, setShowCode] = useState(false)
 
   function handleToggleCode () {
     setShowCode(!showCode)
@@ -19,12 +19,13 @@ export default function Component ({ className, children }) {
         {children}
       </div>
       <button
-        className='hidden absolute top-1 right-1 text-white hover:text-primary drop-shadow'
+        className='absolute top-1 right-2 flex items-center gap-1 text-white text-sm hover:text-primary drop-shadow'
         onClick={handleToggleCode}
       >
-        <svg width={24} height={24} fill='currentColor' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'>
+        <svg width={20} height={20} fill='currentColor' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'>
           <path d='M4.708 5.578 2.061 8.224l2.647 2.646-.708.708-3-3V7.87l3-3 .708.708zm7-.708L11 5.578l2.647 2.646L11 10.87l.708.708 3-3V7.87l-3-3zM4.908 13l.894.448 5-10L9.908 3l-5 10z' />
         </svg>
+        View code
       </button>
       {showCode && <Code code={code} />}
     </section>
