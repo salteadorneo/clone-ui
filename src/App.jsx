@@ -10,7 +10,10 @@ import Twitter from './themes/Twitter'
 import VisionPro from './themes/VisionPro'
 
 function App () {
-  const [theme, setTheme] = useState('vision-pro')
+  const subdomain = window.location.host.split('.')[0]
+  const themeFromSubdomain = Object.keys(THEMES).find(theme => theme === subdomain)
+
+  const [theme, setTheme] = useState(themeFromSubdomain ?? 'vision-pro')
 
   return (
     <>
@@ -22,28 +25,28 @@ function App () {
           </a>
         </h1>
 
-        <div className='flex items-center gap-4'>
-          <select
-            value={theme}
-            onChange={e => setTheme(e.target.value)}
-            className='p-2 rounded-md bg-slate-100 text-slate-800'
-          >
-            {Object.entries(THEMES).map(([theme, { name }]) => (
-              <option key={theme} value={theme}>{name}</option>
-            ))}
-          </select>
-        </div>
+        {!themeFromSubdomain && (
+          <div className='flex items-center gap-4'>
+            <select
+              value={theme}
+              onChange={e => setTheme(e.target.value)}
+              className='p-2 rounded-md bg-slate-100 text-slate-800'
+            >
+              {Object.entries(THEMES).map(([theme, { name }]) => (
+                <option key={theme} value={theme}>{name}</option>
+              ))}
+            </select>
+          </div>
+        )}
       </header>
-      <main className='p-4 pb-12 text-center bg-gray-200'>
-        <Route path='/'>
-          {theme === 'vision-pro' && (
-            <VisionPro theme={theme} />
-          )}
-          {theme === 'twitter' && (
-            <Twitter theme={theme} />
-          )}
-        </Route>
-      </main>
+      <Route path='/'>
+        {theme === 'vision-pro' && (
+          <VisionPro theme={theme} />
+        )}
+        {theme === 'twitter' && (
+          <Twitter theme={theme} />
+        )}
+      </Route>
       <footer className='flex justify-center py-3 px-6'>
         <p className='flex flex-wrap items-center gap-2 text-sm text-slate-800'>
           <Logo />
