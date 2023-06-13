@@ -1,4 +1,5 @@
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight'
+import { githubGist } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { toast } from 'sonner'
 import { Clipboard } from '../Icons'
 
@@ -7,6 +8,7 @@ export default function Code ({ code, language = 'html' }) {
     navigator.clipboard.writeText(code)
     toast.success('Copied to clipboard')
   }
+
   return (
     <div className='relative text-left'>
       <button
@@ -17,7 +19,8 @@ export default function Code ({ code, language = 'html' }) {
       </button>
 
       <SyntaxHighlighter
-        className='rounded text-sm'
+        className='rounded-b text-sm '
+        style={githubGist}
         language={language}
         wrapLines
         wrapLongLines

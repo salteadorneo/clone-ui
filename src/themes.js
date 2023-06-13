@@ -1,5 +1,14 @@
 
 export const THEMES = {
+  'vision-pro': {
+    name: 'Vision Pro',
+    colors: {
+      primary: '#ffffff1A'
+    },
+    font: {
+      primary: '#ffffff1A'
+    }
+  },
   twitter: {
     name: 'Twitter',
     colors: {

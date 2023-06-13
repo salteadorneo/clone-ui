@@ -13,6 +13,15 @@ export default {
         quaternary: 'var(--color-quaternary)',
         quinary: 'var(--color-quinary)',
         senary: 'var(--color-senary)'
+      },
+      animation: {
+        'fade-in-scale': 'fadeinscale 1.5s ease-in-out'
+      },
+      keyframes: {
+        fadeinscale: {
+          '0%': { transform: 'scale(1.5)', opacity: 0 },
+          '100%': { transform: 'scale(1)', opacity: 1 }
+        }
       }
     }
   },
@@ -27,7 +36,10 @@ export default {
     'px-3',
     'px-4',
     'font-medium',
-    'font-semibold'
+    'font-semibold',
+    'scale-50',
+    'scale-75',
+    'scale-100'
   ],
   plugins: []
 }
