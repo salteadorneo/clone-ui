@@ -20,14 +20,16 @@ function App () {
       <Toaster position='top-center' />
       <header className='flex justify-between py-3 px-6'>
         <h1>
-          <a href='/'>
+          <a href='/clone-ui'>
             <Logo />
           </a>
         </h1>
       </header>
-      <Route path='/'>
-        {theme === 'vision-pro' && <VisionPro theme={theme} />}
-        {theme === 'twitter' && <Twitter theme={theme} />}
+      <Route path='/clone-ui'>
+        <VisionPro theme={theme} />
+      </Route>
+      <Route path='/clone-ui/twitter'>
+        <Twitter theme={theme} />
       </Route>
       <footer className='flex justify-center py-3 px-6'>
         <p className='flex flex-wrap items-center gap-2 text-sm text-slate-800'>
