@@ -6,6 +6,4 @@
 
 ## Design Systems
 
-[Vision Pro](https://vision-pro.clone-ui.design/)
-
-[Twitter](https://twitter.clone-ui.design/)
+[Vision Pro](https://salteadorneo.github.io/clone-ui/)
